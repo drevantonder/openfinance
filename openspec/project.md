@@ -2,13 +2,16 @@
 
 ## Purpose
 
-Open source expense tracker focused on fast receipt capture, beautiful UX, and a simple API. Core flows include mobile/web upload, email mailbox ingestion, and automated receipt parsing.
+Open-source modular personal finance platform with mobile capture, web dashboard, and API. Focus on fast receipt capture, email ingestion, and AI parsing, while allowing feature modules to be enabled per instance.
 
 ## Tech Stack
 
 - Expo (mobile + web)
 - Turborepo monorepo
-- Cloudflare Workers + Email Workers
+- Hono API on Cloudflare Workers
+- Neon Postgres + PowerSync (local-first sync)
+- Cloudflare R2 (blob storage)
+- Better Auth
 - Multimodal LLM receipt parsing (Gemini 3 Flash)
 
 ## Project Conventions
@@ -22,14 +25,15 @@ Open source expense tracker focused on fast receipt capture, beautiful UX, and a
 ### Architecture Patterns
 
 - Monorepo with `apps/` and `packages/`
-- Edge-first services on Cloudflare Workers
-- Email ingestion via mailbox worker, normalized into a common receipt pipeline
+- Core shell (auth, navigation, settings) with feature modules
+- Module registry with instance-level config toggles
+- Email ingestion via mailbox worker, normalized into a shared pipeline
 - Receipt parsing pipeline: upload -> extract -> normalize -> validate -> persist
-- Public API exposes core expense/receipt models with stable versioning
+- Public API exposes canonical transaction model (expenses + income)
 
 ### Testing Strategy
 
-- Prefer testing core parsing and API behaviors before UI polish
+- Prefer testing domain logic and API behaviors before UI polish
 
 ### Git Workflow
 
@@ -39,18 +43,23 @@ Open source expense tracker focused on fast receipt capture, beautiful UX, and a
 
 ## Domain Context
 
-- Receipts can arrive via upload, email forward, or API
+- Transactions include expenses and income/deposits
+- Sources can arrive via upload, email forward, or API
 - Parsing accuracy and UX are primary differentiators
-- Data model centered on expenses, receipts, merchants, and line items
+- Modules include budgeting, assets, projections, household, and others
 
 ## Important Constraints
 
 - Security-first handling of user data and receipts
-- No explicit regulatory constraints yet
+- Modules enabled per instance via config (tenant toggles later)
 
 ## External Dependencies
 
 - Cloudflare Workers platform
 - Cloudflare Email Workers
+- Cloudflare R2
+- Neon Postgres
+- PowerSync
+- Better Auth
 - Gemini 3 Flash multimodal LLM (receipt OCR/parsing)
 - Additional services TBD
