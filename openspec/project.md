@@ -1,31 +1,56 @@
 # Project Context
 
 ## Purpose
-[Describe your project's purpose and goals]
+
+Open source expense tracker focused on fast receipt capture, beautiful UX, and a simple API. Core flows include mobile/web upload, email mailbox ingestion, and automated receipt parsing.
 
 ## Tech Stack
-- [List your primary technologies]
-- [e.g., TypeScript, React, Node.js]
+
+- Expo (mobile + web)
+- Turborepo monorepo
+- Cloudflare Workers + Email Workers
+- Multimodal LLM receipt parsing (Gemini 3 Flash)
 
 ## Project Conventions
 
 ### Code Style
-[Describe your code style preferences, formatting rules, and naming conventions]
+
+- Formatting: Prettier + ESLint (Expo defaults)
+- Naming: camelCase for variables/functions, PascalCase for components/types, kebab-case for package names
+- File naming: components in PascalCase, utilities in camelCase, packages/apps in kebab-case
 
 ### Architecture Patterns
-[Document your architectural decisions and patterns]
+
+- Monorepo with `apps/` and `packages/`
+- Edge-first services on Cloudflare Workers
+- Email ingestion via mailbox worker, normalized into a common receipt pipeline
+- Receipt parsing pipeline: upload -> extract -> normalize -> validate -> persist
+- Public API exposes core expense/receipt models with stable versioning
 
 ### Testing Strategy
-[Explain your testing approach and requirements]
+
+- Prefer testing core parsing and API behaviors before UI polish
 
 ### Git Workflow
-[Describe your branching strategy and commit conventions]
+
+- Trunk-based development on `main`
+- Short-lived branches when needed
+- Conventional Commits required
 
 ## Domain Context
-[Add domain-specific knowledge that AI assistants need to understand]
+
+- Receipts can arrive via upload, email forward, or API
+- Parsing accuracy and UX are primary differentiators
+- Data model centered on expenses, receipts, merchants, and line items
 
 ## Important Constraints
-[List any technical, business, or regulatory constraints]
+
+- Security-first handling of user data and receipts
+- No explicit regulatory constraints yet
 
 ## External Dependencies
-[Document key external services, APIs, or systems]
+
+- Cloudflare Workers platform
+- Cloudflare Email Workers
+- Gemini 3 Flash multimodal LLM (receipt OCR/parsing)
+- Additional services TBD
