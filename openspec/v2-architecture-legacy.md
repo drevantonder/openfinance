@@ -11,19 +11,6 @@
 
 ## 3. Feature Modules
 
-### Email Module
-**Goal:** Handle incoming emails for expense processing and verification.
-
-**Key Features:**
-- Receive and store emails via Cloudflare Workers.
-- **Security:** Verify sender identity (DKIM/SPF + Authorized User check).
-- **Hooks:** Allow other modules (e.g., Expense) to subscribe to new emails.
-- **API:** Expose only verified emails to other modules.
-
-**User Interface:**
-- **Inbox Page:** List emails, view status (Verified/Unverified).
-- **Actions:** Manual verify, Delete, Labeling.
-
 ### Expense & Income Module
 **Goal:** Frictionless tracking and processing of financial transactions.
 
