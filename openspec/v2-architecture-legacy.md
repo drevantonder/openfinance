@@ -11,44 +11,6 @@
 
 ## 3. Feature Modules
 
-### Expense & Income Module
-**Goal:** Frictionless tracking and processing of financial transactions.
-
-**Data Entities:**
-- **Transaction:** Title, Dates (Created, Invoice, Incurred), Totals (Orig/AUD/Tax), Exchange Rate, Status.
-  - *Audit Trail:* Track "Changes" (who/what updated the record).
-- **Line Items:** Unit, Quantity, Cost, Taxable status, Category.
-- **Source:** Type (Image, Email, Bank, Manual), Raw Content.
-  - *Metadata:* AI Model Version used for processing.
-- **Category:** Title, Description, Color, Icon, Parent Category.
-
-**Key Features:**
-- **Multi-Source Capture:**
-  - **Widget-First (iOS):** Lock screen widget (tap to camera), Live Activity ("Last expense..."), Siri Shortcuts.
-  - **Photo Stack:** Capture multiple receipts in batch -> Process in background -> Review later.
-  - **Email:** Extract attachments and body text from Inbox.
-- **AI Processing:**
-  - Gemini 3 Flash for OCR and extraction.
-  - Local cropping before upload.
-  - **Filtering:** Filter out non-expense input (Junk/Spam) without deleting (user can push past filter).
-  - **Aggregation:** Prompt AI with *all* sources (Email + Bank + Image) simultaneously to fill details.
-  - **De-duplication:** Merge sources using confidence scores.
-- **Notifications:** Push on new expense/income detected.
-
-**User Interface:**
-- **Activity Feed:**
-  - Sorting: Default to **Invoice Date** descending. (Also: Date Processed, Total).
-  - Filtering: Category, Source, Cost, Date, Status.
-  - **Search:** Full-text search.
-  - **Indicators:** Visual icons for "Duplicate", "Conflict", "Status".
-  - **Bulk Actions:** Select All button, Bulk Delete/Reprocess/Merge.
-- **Detail View:**
-  - **Conflict Warning:** UI highlights if sources disagree (e.g., Email $100 vs Bank $99).
-  - **Split View:** Parsed details vs. Sources.
-  - **Source Tabs:** Tab for each source (PDF/Image/Email), titled with AI-determined document name.
-  - **Edit Mode:** Natural layout (receipt style).
-- **Navigation:** "Capture" button as the primary action (FAB on mobile, prominent on desktop).
-
 ### Budget Module
 **Goal:** Define expected financial behavior and savings goals.
 

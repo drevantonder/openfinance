@@ -32,7 +32,7 @@ The system SHALL store user profile data and roles for access control.
 The system SHALL allow modules (discrete feature areas enabled by configuration) to inject widgets into the dashboard.
 
 #### Scenario: Required widgets present
-- **WHEN** the dashboard renders and the Expenses module is enabled
+- **WHEN** the dashboard renders and the Activity module is enabled
 - **THEN** it includes expenses by top-level category and actual expenses vs income
 
 #### Scenario: No widgets available

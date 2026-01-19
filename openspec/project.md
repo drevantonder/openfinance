@@ -92,3 +92,15 @@ Open-source modular personal finance app that saves people time in managing mone
 - Better Auth
 - Gemini 3 Flash multimodal LLM (receipt OCR/parsing)
 - Additional services TBD
+
+## Future Direction (To Be Specced)
+
+Lightweight placeholders for scope we know we want, but have not specified yet. Kept here to avoid losing direction without over-committing to details.
+
+- [ ] Audit trail: record who changed what and when
+- [ ] Bank integration: structured bank feed imports
+- [ ] Internal transfers: transfer tracking between accounts
+- [ ] Capture widgets: lock screen widget entry
+- [ ] Capture live status: live activity updates during capture
+- [ ] Capture shortcuts: Siri Shortcuts to launch capture
+- [ ] Capture cropping: local cropping before upload
