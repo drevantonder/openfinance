@@ -42,30 +42,22 @@ The system SHALL store activity categories with titles, descriptions, colors, pa
 - **WHEN** a household member views categories
 - **THEN** household categories are available to them
 
-### Requirement: Category access control
-The system SHALL allow only admins to create, update, or delete activity categories.
+### Requirement: Category management
+The system SHALL allow users to create, update, or delete activity categories.
 
-#### Scenario: Admin edits category
-- **WHEN** an admin updates an activity category
+#### Scenario: User edits category
+- **WHEN** a user updates an activity category
 - **THEN** the changes are saved
 
-#### Scenario: Non-admin edits category
-- **WHEN** a non-admin attempts to update an activity category
-- **THEN** the action is blocked
-
 ### Requirement: Category settings entry
-The system SHALL register a settings entry for managing activity categories in the shared settings area for admins and explain that descriptions help auto-categorization.
+The system SHALL register a settings entry for managing activity categories in the shared settings area and explain that descriptions help auto-categorization.
 
 #### Scenario: Category settings shown
-- **WHEN** an admin opens settings
+- **WHEN** a user opens settings
 - **THEN** an Activity Categories section is available for managing categories
 
-#### Scenario: Category settings hidden
-- **WHEN** a non-admin opens settings
-- **THEN** the Activity Categories section is not available
-
 #### Scenario: Category description guidance shown
-- **WHEN** an admin edits an activity category
+- **WHEN** a user edits an activity category
 - **THEN** helper text explains that descriptions improve automatic categorization
 
 ### Requirement: Activity capture entry points

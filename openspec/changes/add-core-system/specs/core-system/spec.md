@@ -22,11 +22,11 @@ The system SHALL support sign-in and sign-out for users.
 - **THEN** the login page is shown
 
 ### Requirement: User accounts
-The system SHALL store user profile data and roles for access control.
+The system SHALL store user profile data.
 
 #### Scenario: User profile created
 - **WHEN** a new user is invited or signs up
-- **THEN** the system stores the user email, name, picture, and role
+- **THEN** the system stores the user email, name, and picture
 
 ### Requirement: Dashboard widgets
 The system SHALL allow modules (discrete feature areas enabled by configuration) to inject widgets into the dashboard.
@@ -76,15 +76,15 @@ The system SHALL load zero or more modules enabled by instance configuration at 
 - **WHEN** no modules are enabled in instance configuration
 - **THEN** the shell still loads with empty navigation and dashboard
 
-### Requirement: Admin settings
+### Requirement: Settings management
 The system SHALL provide core settings sections for user access management and module variable management.
 
-#### Scenario: Admin manages user access
-- **WHEN** an admin opens settings
-- **THEN** a user access section is available for managing invites, roles, and access
+#### Scenario: User manages access
+- **WHEN** a user opens settings
+- **THEN** a user access section is available for managing invites and access
 
-#### Scenario: Admin updates module variables
-- **WHEN** an admin updates a module variable in settings
+#### Scenario: User updates module variables
+- **WHEN** a user updates a module variable in settings
 - **THEN** the new value is saved and available to modules
 
 ### Requirement: Module variables
