@@ -29,6 +29,8 @@ Open-source modular personal finance app that saves people time in managing mone
 - Postgres (Neon): PowerSync’s best fit with managed Postgres, no ops
 - Better Auth: works with Neon and Expo
 - Gemini 3 Flash: fast multimodal model for images, PDFs, and email text
+- PostHog: analytics, performance, error tracking
+- Expo Push Notifications: mobile push delivery
 
 ## Architecture Decisions
 

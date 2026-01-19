@@ -9,45 +9,6 @@
 > **Context:** This document outlines the architecture and requirements for the complete rewrite of the application (referred to as V2).
 > **Logic Reference:** For specific business rules (Tax, HECS, TMN), see `docs/DOMAIN.md`.
 
-## 1. System Architecture
-
-### 1.1 Product Objectives
-- **Speed:** Instant-load mobile interface (local-first).
-- **Reliability:** Full offline support via PowerSync.
-- **Collaboration:** Seamless data sharing between spouses.
-- **User Experience:** Frictionless capture and proactive financial guidance.
-
-### 1.2 Tech Stack
-- **Mobile:** Expo (React Native)
-  - **UI Library:** Tamagui
-  - **Widgets:** `@bacons/apple-targets` (iOS)
-- **API:** Hono
-- **Compute:** Cloudflare Workers ($5 plan)
-- **Database:** Neon Postgres (Serverless, Free Plan)
-- **Sync Engine:** PowerSync (Local-first)
-  - Read: PowerSync -> SQLite (Local)
-  - Write: API -> Neon Postgres
-  - *Note:* Sync relies on foreground activity. True background sync requires `BackgroundFetch` (approx every 15-60 mins).
-- **Blob Storage:** Cloudflare R2 (Images, PDFs, email attachments)
-- **Auth:** Better Auth (with Neon Auth adapter)
-- **Email:** Cloudflare Email Workers (Inbox processing)
-- **AI:** Cloudflare AI Gateway + Google Gemini 3 Flash (Cost/Performance tracking)
-
-### 1.3 Infrastructure & Code Structure
-- **Monorepo:** Turborepo
-- **Module Boundaries:** Build-time directory conventions (Packages), not a runtime plugin architecture.
-  - `packages/domain/*`: Pure business logic (shared).
-  - `packages/api/*`: Server-side API definitions.
-  - `apps/*`: Mobile, Web, etc.
-- **Monitoring:** PostHog (Analytics, Performance, Error Tracking).
-- **Push Notifications:** Expo Push Notifications.
-
-### 1.4 Target Audience
-- **Primary:** Myself and my wife.
-- **Potential:** Friends, Missionary colleagues, Power to Change
-
----
-
 ## 2. Core Modules
 
 ### Core System
