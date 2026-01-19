@@ -47,15 +47,19 @@ The system SHALL provide a desktop sidebar and a mobile bottom navigation with a
 - **THEN** the matching navigation pattern is shown
 
 ### Requirement: Extensible navigation
-The system SHALL allow modules to optionally register navigation entries (label + route) with placement hints (primary navigation or settings).
+The system SHALL allow modules to register navigation entries (label + route) and zero or more settings sections with custom titles, with placement hints (primary navigation or settings).
 
 #### Scenario: Module adds primary navigation entry
 - **WHEN** a module registers a primary navigation entry
 - **THEN** it appears in the current navigation layout (desktop sidebar or mobile bottom navigation)
 
 #### Scenario: Module adds settings entry
-- **WHEN** a module registers a settings entry with title, icon, slug, and renderable UI component
+- **WHEN** a module registers a settings entry with a custom title, icon, slug, and renderable UI component
 - **THEN** it appears as a section in the shared settings area
+
+#### Scenario: Module adds multiple settings entries
+- **WHEN** a module registers more than one settings entry
+- **THEN** each entry appears as a separate section in the shared settings area
 
 #### Scenario: Module registers no navigation
 - **WHEN** a module registers no navigation entry
@@ -72,22 +76,14 @@ The system SHALL load zero or more modules enabled by instance configuration at 
 - **WHEN** no modules are enabled in instance configuration
 - **THEN** the shell still loads with empty navigation and dashboard
 
-#### Scenario: Module adds primary navigation entry
-- **WHEN** a module registers a primary navigation entry
-- **THEN** it appears in the current navigation layout (desktop sidebar or mobile bottom navigation)
-
-#### Scenario: Module adds settings entry
-- **WHEN** a module registers a settings entry with title, icon, slug, and renderable UI component
-- **THEN** it appears as a section in the shared settings area
-
-#### Scenario: Module registers no navigation
-- **WHEN** a module registers no navigation entry
-- **THEN** no navigation item is added for that module
-
 ### Requirement: Admin settings
-The system SHALL let admins manage user access and edit module variables.
+The system SHALL provide core settings sections for user access management and module variable management.
 
-#### Scenario: Admin updates global variables
+#### Scenario: Admin manages user access
+- **WHEN** an admin opens settings
+- **THEN** a user access section is available for managing invites, roles, and access
+
+#### Scenario: Admin updates module variables
 - **WHEN** an admin updates a module variable in settings
 - **THEN** the new value is saved and available to modules
 

@@ -27,12 +27,46 @@ The system SHALL store the AI model version used when a source is processed.
 - **WHEN** a source for an expense or income transaction is processed by AI
 - **THEN** the AI model version is stored with the source metadata
 
-### Requirement: Categories
-The system SHALL store categories with titles, descriptions, colors, icons, and parent categories.
+### Requirement: Activity categories
+The system SHALL store activity categories with titles, descriptions, colors, parent categories, and a category type (expense or income). Category descriptions SHALL be provided to AI extraction to improve categorization. Activity categories SHALL be scoped to a household.
 
-#### Scenario: Category created
-- **WHEN** a category is created
-- **THEN** the category includes title, description, color, icon, and optional parent category
+#### Scenario: Activity category created
+- **WHEN** an activity category is created
+- **THEN** the category includes title, description, color, optional parent category, and a category type
+
+#### Scenario: Category description used for extraction
+- **WHEN** the system runs AI categorization
+- **THEN** activity category descriptions are provided as context
+
+#### Scenario: Household categories shared
+- **WHEN** a household member views categories
+- **THEN** household categories are available to them
+
+### Requirement: Category access control
+The system SHALL allow only admins to create, update, or delete activity categories.
+
+#### Scenario: Admin edits category
+- **WHEN** an admin updates an activity category
+- **THEN** the changes are saved
+
+#### Scenario: Non-admin edits category
+- **WHEN** a non-admin attempts to update an activity category
+- **THEN** the action is blocked
+
+### Requirement: Category settings entry
+The system SHALL register a settings entry for managing activity categories in the shared settings area for admins and explain that descriptions help auto-categorization.
+
+#### Scenario: Category settings shown
+- **WHEN** an admin opens settings
+- **THEN** an Activity Categories section is available for managing categories
+
+#### Scenario: Category settings hidden
+- **WHEN** a non-admin opens settings
+- **THEN** the Activity Categories section is not available
+
+#### Scenario: Category description guidance shown
+- **WHEN** an admin edits an activity category
+- **THEN** helper text explains that descriptions improve automatic categorization
 
 ### Requirement: Activity capture entry points
 The system SHALL provide capture entry points for expense and income activity intake.

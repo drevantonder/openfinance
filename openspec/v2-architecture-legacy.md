@@ -11,32 +11,22 @@
 
 ## 3. Feature Modules
 
-### Budget Module
-**Goal:** Define expected financial behavior and savings goals.
-
-**Data Entities:**
-- **Budget Item:** Title, Amount, Category, Type (Default: Expense), Active State (Default: Yes).
-- **Frequency:**
-  - *Recurring:* Weekly, Fortnightly, Monthly, Quarterly, Yearly (Optional Start/End Date).
-  - *Once-off:* Target Date (Required) - for Goals/Large Expenses.
-
-**User Interface:**
-- **Budget Settings:** CRUD interface for budget items.
-- **Savings Goals:** Support for "Sinking Fund" / Progress Bar UI for Once-off items.
-
-### Budget vs Reality Module
-**Goal:** Analyze adherence to the budget and suggest corrections.
+### Budget vs Reality Module (rename to Budgeting Module)
+**Goal:** Compare expected targets to actuals and recommend adjustments, including cash-on-hand guidance and target allocations.
 
 **Key Features:**
-- **Automated Matching:** AI + Fuzzy match (Category/Merchant) to link Actuals to Budget.
+- **Target Inputs:** Expected Expenses targets (export hook) + Expected Income (from Income module).
+- **Actual Inputs:** Activity transactions and balances.
+- **Cash Planning:** Recommend current cash-on-hand to stay on track; break down recommended cash by target.
+- **Automated Matching:** AI + Fuzzy match (Category/Merchant) to link actuals to expected targets.
 - **Suggestions:**
-  - "Unbudgeted expense appeared 3+ times" → Suggest adding to budget.
-  - "Budget item unused for 2+ months" → Suggest disabling.
+  - "Unplanned expense appeared 3+ times" → Suggest adding expected expense.
+  - "Expected expense unused for 2+ months" → Suggest disabling.
   - "Repeated non-recorded expense" → Suggest adding.
 
 **User Interface:**
-- **Dashboard Widget:** "Budget vs Reality" chart.
-- **Matching UI:** Interface to confirm or correct AI matches.
+- **Dashboard Widget:** "Budgeting" or "Expected vs Reality" chart.
+- **Matching UI:** Interface to confirm or correct matches.
 
 ### Household Module
 **Goal:** Manage family members and their specific debts (HECS).
