@@ -25,6 +25,14 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 <!-- OPENSPEC:END -->
 
+## Audience & Language
+
+Apply these rules whenever you write copy, names, or specs.
+
+- **User-facing copy** (UI strings, feature lists, onboarding, README intro): use family-friendly, everyday money words; keep it short and human; avoid finance/enterprise jargon.
+- **Developer docs/specs**: be concise and precise; still avoid enterprise tone; prefer the same everyday terms users see so internal names don’t drift (e.g. avoid “ledger,” use “expenses/income/budget”).
+- **README**: start with a friendly, practical overview + features; get more technical in later sections (self-hosting, contributing, security, dev setup).
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
