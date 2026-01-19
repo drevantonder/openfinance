@@ -69,7 +69,6 @@ Open-source modular personal finance app that saves people time in managing mone
 
 ## Domain Context
 
-- Transactions include expenses and income/deposits
 - Sources can arrive via upload, email forward, or API
 - Receipts and sources can be merged for a single transaction
 - Parsing accuracy and capture speed are primary differentiators

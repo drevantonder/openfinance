@@ -2,7 +2,18 @@
 
 ## Beads
 
-Use 'bd' (beads) for task tracking.
+Use `bd` for all issue tracking (create/update/close/sync).
+Track multi-step or multi-session work in Beads.
+Run `bd sync` at session end.
+
+## Beads Viewer (bv)
+
+Use `bv` as the Beads triage sidecar (don’t parse `.beads/*.jsonl` directly).
+Only use `bv --robot-*` flags; bare `bv` opens a TUI and blocks.
+Start with `bv --robot-triage`.
+Quick pick: `bv --robot-next`.
+Planning: `bv --robot-plan`.
+Scope with `--label` / `--recipe`.
 
 <!-- OPENSPEC:START -->
 ## OpenSpec Instructions
@@ -24,6 +35,29 @@ Use `@/openspec/AGENTS.md` to learn:
 Keep this managed block so 'openspec update' can refresh the instructions.
 
 <!-- OPENSPEC:END -->
+
+## OpenSpec (Project)
+
+Planning/proposals/specs live in OpenSpec.
+When you need project context (purpose, stack, conventions, constraints), read `openspec/project.md`.
+When a change is approved and ready to implement, convert OpenSpec plans/specs into Beads issues for tracking.
+
+## Ralph-tui (Ralph loops)
+
+Ralph-tui runs your agent in a loop: pick task -> run -> log progress -> repeat.
+It pulls tasks from Beads epics (`beads-bv`) or a `prd.json`.
+
+Suggest it when: scope is clear, multi-step, acceptance-criteria heavy, and benefits from autonomous iterations + tests.
+Avoid when: hotfix/quick change, unclear scope, or risky work without strong tests.
+
+Commands:
+- `ralph-tui run --tracker beads-bv --epic <id>`
+- `ralph-tui run --prd ./prd.json`
+- `ralph-tui status`, `ralph-tui logs`, `ralph-tui resume`
+
+Config:
+- `.ralph-tui/config.toml`: `agent`, `tracker`, `maxIterations`, `progressFile`, `autoCommit`.
+- `autoCommit` commits per task; still follow session close + push workflow.
 
 ## Audience & Language
 
