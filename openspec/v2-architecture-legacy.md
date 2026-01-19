@@ -28,19 +28,6 @@
 - **Dashboard Widget:** "Budgeting" or "Expected vs Reality" chart.
 - **Matching UI:** Interface to confirm or correct matches.
 
-### Household Module
-**Goal:** Manage family members and their specific debts (HECS).
-
-**Data Entities:**
-- **Member:** Name, Active State (Default: Yes).
-- **HECS Debt:** Balance, Balance Date, Scheduled Additions (Date/Amount).
-
-**Key Features:**
-- Link HECS debts to specific people.
-
-**User Interface:**
-- **Household Settings:** Manage members and debts.
-
 ### Income Sources Module
 **Goal:** Define revenue streams.
 
