@@ -9,32 +9,6 @@
 > **Context:** This document outlines the architecture and requirements for the complete rewrite of the application (referred to as V2).
 > **Logic Reference:** For specific business rules (Tax, HECS, TMN), see `docs/DOMAIN.md`.
 
-## 2. Core Modules
-
-### Core System
-**Goal:** Provide the foundational shell, authentication, and navigation for the app.
-
-**Data Entities:**
-- **User:** Email, Name, Picture, Role (Admin/User).
-
-**Key Features:**
-- Authentication (Login/Logout).
-- Application Settings.
-- Extensible Navigation system.
-
-**User Interface:**
-- **Login Page**
-- **Dashboard:** Blank canvas for other modules to inject widgets.
-  - *Required Widgets:* "Expenses by Top-Level Category", "Actual Expenses vs Income".
-- **Sidebar/Navigation:**
-  - Desktop: Sidebar with expandable sections.
-  - Mobile: Bottom Navigation + "More" menu.
-- **Settings Area:**
-  - User Management (Admin only: Grant access/revoke).
-  - **Global Variables:** Central UI for editing module-specific variables (e.g., HECS Indexation Rate, HEM benchmarks, DTI Caps, Base Interest Rate).
-
----
-
 ## 3. Feature Modules
 
 ### Email Module
