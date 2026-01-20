@@ -52,8 +52,8 @@ New request?
 
 ## Implementation Paths
 
-- Ralph TUI (AFK loop): use the `implementing-with-ralph-tui` skill to generate `prd.json`, then run `ralph-tui run --prd docs/changes/<slug>/prd.json`.
-- HITL Ralph loop: use the `implementing-with-ralph-tui` skill to generate `prd.json`, run one iteration, review, adjust spec, repeat.
+- Ralph TUI (AFK loop): use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` outside opencode.
+- HITL Ralph loop: use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, run one iteration outside opencode, review, adjust spec, repeat.
 - Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.).
 - Human implementation: no agent loop.
 
@@ -64,7 +64,7 @@ Do not start implementation until the change is reviewed and approved.
 ## Skills
 
 - `creating-changes` for proposal/delta authoring, examples, and validation tips.
-- `implementing-with-ralph-tui` for prd.json schema and ralph-tui execution.
+- `implementing-with-ralph-tui` for prd.json schema and ralph-tui execution (run outside opencode).
 - `syncing-to-specs` for promoting specs with intelligent merge.
 - `archiving-changes` for archiving changes (syncs by default).
 - `adjusting-spec-driven-development-workflow` for improving the workflow itself.

@@ -21,10 +21,16 @@ Use when executing a change via ralph-tui.
 3. Infer quality gates from context (typecheck/test/build as relevant) and include them in each story without overloading criteria.
 4. Infer a short description from `proposal.md`.
 5. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
-6. Ask the user to review the prd.json and request edits if needed.
-7. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after the user confirms the prd.json.
+6. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
+7. Ask the user to review the prd.json and request edits if needed.
+8. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after the user confirms the prd.json.
+9. Remind the user to run ralph-tui outside opencode.
 
 ## prd.json Schema
+
+## Location
+
+Always write `prd.json` at `docs/changes/<slug>/prd.json`.
 
 Root fields:
 - `title` (required)
@@ -68,8 +74,8 @@ Example (minimal story):
 
 ## Modes
 
-- AFK loop: run `ralph-tui run --prd docs/changes/<slug>/prd.json`.
-- HITL loop: run one iteration, review, adjust spec, repeat.
+- AFK loop: run `ralph-tui run --prd docs/changes/<slug>/prd.json` outside opencode.
+- HITL loop: run one iteration outside opencode, review, adjust spec, repeat.
 
 ## Review and Re-run
 
