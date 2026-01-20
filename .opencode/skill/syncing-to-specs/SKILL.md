@@ -28,6 +28,7 @@ Use when you want to update `docs/specs/` with deltas from a change without arch
    - Remove delta section headers (ADDED/MODIFIED/REMOVED/RENAMED) from `docs/specs/`.
 5. Ensure every requirement still has at least one `#### Scenario:`.
 6. Summarize changes by capability.
+7. If all requirements for the change are implemented, suggest archiving the change.
 
 ## Notes
 
