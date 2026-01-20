@@ -31,9 +31,10 @@ Use when executing a change via ralph-tui.
    cd "$(git gtr go <branch>)"
    ralph-tui run --prd docs/changes/<slug>/prd.json
    ```
-10. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
-11. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after user confirms prd.json.
-12. Remind the user to run ralph-tui outside opencode.
+10. Remind the user that ralph-tui creates per-story commits; offer to squash before merging.
+11. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
+12. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after user confirms prd.json.
+13. Remind the user to run ralph-tui outside opencode.
 
 
 ## prd.json Schema

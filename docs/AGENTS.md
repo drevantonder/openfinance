@@ -52,13 +52,14 @@ New request?
 - Validate spec format.
 - Implement the change.
 - Review implementation against the spec.
+- For ralph‑tui changes, squash story commits before merging.
 - Sync to `docs/specs/` when implementation is accepted.
 - Archive when work is complete.
 
 ## Implementation Paths
 
-- Ralph TUI (AFK loop): after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` from the worktree.
-- HITL Ralph loop: after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, run one iteration from the worktree, review, adjust spec, repeat.
+- Ralph TUI (AFK loop): after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` from the worktree. Squash story commits before merging.
+- HITL Ralph loop: after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, run one iteration from the worktree, review, adjust spec, repeat. Squash story commits before merging.
 - Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.) with optional gtr worktree.
 - Human implementation: no agent loop; optional gtr worktree.
 
