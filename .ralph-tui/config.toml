@@ -10,3 +10,6 @@ autoCommit = true
 
 [trackerOptions]
 [agentOptions]
+provider = "google"
+model = "gemini-3-flash-preview"
+variant = "high"
