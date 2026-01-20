@@ -1,7 +1,7 @@
 {
   "name": "Raise test bar implementation",
-  "branchName": "ralph/raise-test-bar",
   "description": "Implement CI quality gates, test runner setup, and UI smoke flow support for the raise-test-bar change.",
+  "branchName": "ralph/raise-test-bar",
   "userStories": [
     {
       "id": "US-001",
@@ -14,9 +14,10 @@
         "pnpm test passes"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": "",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-002",
@@ -30,9 +31,12 @@
         "pnpm test passes"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "",
-      "dependsOn": ["US-001"]
+      "dependsOn": [
+        "US-001"
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-003",
@@ -45,9 +49,12 @@
         "pnpm test passes"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "",
-      "dependsOn": ["US-002"]
+      "dependsOn": [
+        "US-002"
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-004",
@@ -61,9 +68,15 @@
         "pnpm test passes"
       ],
       "priority": 4,
-      "passes": false,
+      "passes": true,
       "notes": "",
-      "dependsOn": ["US-002"]
+      "dependsOn": [
+        "US-002"
+      ],
+      "completionNotes": "Completed by agent"
     }
-  ]
+  ],
+  "metadata": {
+    "updatedAt": "2026-01-20T20:49:45.863Z"
+  }
 }

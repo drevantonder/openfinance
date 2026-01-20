@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    # Conditional build: only runs when app code changes (apps/** directory)
+    # This skips build for changes in docs, config, or packages only
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            apps:
+              - 'apps/**'
+
+      - uses: pnpm/action-setup@v4
+        if: steps.filter.outputs.apps == 'true'
+        with:
+          version: 9.12.0
+
+      - uses: actions/setup-node@v4
+        if: steps.filter.outputs.apps == 'true'
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        if: steps.filter.outputs.apps == 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for Maestro flows
+        id: maestro-check
+        if: steps.filter.outputs.apps == 'true'
+        run: |
+          if [ -d "maestro" ] && [ "$(find maestro -name '*.yaml' -o -name '*.yml' | wc -l)" -gt 0 ]; then
+            echo "has_flows=true" >> $GITHUB_OUTPUT
+            echo "::notice::Maestro flows found in maestro/"
+          elif [ -d "apps/mobile/maestro" ] && [ "$(find apps/mobile/maestro -name '*.yaml' -o -name '*.yml' | wc -l)" -gt 0 ]; then
+            echo "has_flows=true" >> $GITHUB_OUTPUT
+            echo "::notice::Maestro flows found in apps/mobile/maestro/"
+          else
+            echo "has_flows=false" >> $GITHUB_OUTPUT
+            echo "::notice::No Maestro flows detected in maestro/ or apps/**/maestro/"
+          fi
+
+      - name: Run build
+        if: steps.filter.outputs.apps == 'true'
+        run: pnpm build
+
+      - name: Install Maestro
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'true'
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "${HOME}/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Run Maestro smoke flows
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'true'
+        run: |
+          echo "Running Maestro smoke flows..."
+          if [ -d "maestro" ]; then
+            maestro test maestro/
+          fi
+          if [ -d "apps/mobile/maestro" ]; then
+            maestro test apps/mobile/maestro/
+          fi
+
+      - name: Maestro flows skipped
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'false'
+        run: |
+          echo "::notice::Maestro smoke flows skipped: no flows found"
