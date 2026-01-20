@@ -1,0 +1,19 @@
+{
+  "name": "openfinance",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "build": "turbo run build",
+    "start": "pnpm --filter openfinance-mobile start",
+    "android": "pnpm --filter openfinance-mobile android",
+    "ios": "pnpm --filter openfinance-mobile ios",
+    "web": "pnpm --filter openfinance-mobile web",
+    "reset-project": "pnpm --filter openfinance-mobile reset-project"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  }
+}
