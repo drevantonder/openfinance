@@ -9,6 +9,7 @@ Use pnpm workspaces for package management.
 
 See `docs/AGENTS.md` for change workflow and spec format.
 Read `docs/project.md` for project context.
+Read `docs/TESTING.md` for the test bar and commands.
 
 ## Ralph TUI
 
