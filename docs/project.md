@@ -4,6 +4,12 @@
 
 Open-source modular personal finance app that saves people time in managing money. Designed to remove busywork, provide real insight, and stay simple without being shallow. Built on strong foundations so the product can evolve quickly.
 
+## Docs & Specs
+
+For workflow details, read `docs/AGENTS.md`.
+Current truth lives in `docs/specs/` (empty for now).
+Proposed changes live in `docs/changes/`, with `docs/changes/<slug>/proposal.md` and delta specs under `docs/changes/<slug>/specs/`, plus `docs/changes/<slug>/prd.json` as the execution plan.
+
 ## Features
 
 - Save time tracking expenses and income with photos, forwarded emails, and uploads with AI-powered extraction

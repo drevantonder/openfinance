@@ -1,6 +1,6 @@
 # V2 Architecture Reference (Legacy)
 
-> **Note:** This is a short-lived legacy reference from the earlier V2 design. It is copied here to avoid context loss while we migrate intent and requirements into OpenSpec, and will be deleted once that migration is complete. It is **not** the current source of truth. Use `openspec/project.md` and `openspec/specs/` for current direction.
+> **Note:** This is a short-lived legacy reference from the earlier V2 design. It is copied here to avoid context loss while we migrate intent and requirements into the new docs workflow, and will be deleted once that migration is complete. It is **not** the current source of truth. Use `docs/project.md` and `docs/specs/` for current direction.
 
 ---
 

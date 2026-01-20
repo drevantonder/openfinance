@@ -3,12 +3,10 @@
 # See: ralph-tui config help
 
 configVersion = "2.1"
-tracker = "beads-bv"
+tracker = "json"
 agent = "opencode"
 maxIterations = 10
 autoCommit = true
 
 [trackerOptions]
-beadsDir = ".beads"
-
 [agentOptions]
