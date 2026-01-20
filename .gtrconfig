@@ -1,0 +1,4 @@
+# .gtrconfig - Team shared configuration
+
+[hooks]
+    postCreate = pnpm install
