@@ -1,9 +1,9 @@
 # Change: Add household module
 
 ## Why
-People need a shared place to manage household members and their HECS debts for accurate income and projection calculations.
+People need a shared place to manage household members and their HECS debts so income and projections stay accurate.
 
 ## What Changes
-- Introduce a household module for member management
-- Add HECS debt tracking linked to members
-- Add a Household settings section
+- Introduce household members with names and active status.
+- Add HECS debt tracking linked to members with balances and schedule additions.
+- Add a Household settings section for member and debt management.

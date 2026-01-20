@@ -1,8 +1,12 @@
-# Change: Migrate Activity Module requirements
+# Change: Activity module
 
 ## Why
-We need the Activity Module behavior captured in our docs so it can serve as the source of truth and guide implementation.
+People need a fast way to capture expenses and income from receipts, emails, and uploads, then see them in a clear activity feed.
 
 ## What Changes
-- Add Activity Module requirements and scenarios as spec deltas
-- Capture the current intent from the legacy V2 architecture doc
+- Capture expenses and income from photos, PDFs, and emails with AI extraction.
+- Store transactions with line items, sources, and category metadata.
+- Add de-duplication, review, and reprocess flows for messy inputs.
+- Provide an activity feed with search, filters, sort, and status indicators.
+- Add category management in settings and surface dashboard widgets.
+- Make capture the primary navigation action with rich detail views.
