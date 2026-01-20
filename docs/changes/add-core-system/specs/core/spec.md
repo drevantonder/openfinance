@@ -28,6 +28,35 @@ The system SHALL store user profile data.
 - **WHEN** a new user is invited or signs up
 - **THEN** the system stores the user email, name, and picture
 
+### Requirement: Provider contracts
+The system SHALL define provider contracts for auth session, user profile storage, and module variables storage.
+
+#### Scenario: Shell uses auth contract
+- **WHEN** the shell signs a user in or out
+- **THEN** it uses the auth provider contract
+
+#### Scenario: Settings uses module variables contract
+- **WHEN** settings reads or updates a module variable
+- **THEN** it uses the module variables provider contract
+
+### Requirement: Mock providers
+The system SHALL provide mock providers for auth session, user profiles, and module variables with local-only behavior.
+
+#### Scenario: Mock auth sign-in
+- **WHEN** the app runs with mock providers
+- **THEN** sign-in returns a local test user without network calls
+
+#### Scenario: Mock variable persistence
+- **WHEN** a module variable is updated with mock providers enabled
+- **THEN** the new value is stored locally and returned on the next read
+
+### Requirement: Provider selection
+The system SHALL allow selecting mock or real providers via configuration.
+
+#### Scenario: Default to mock providers
+- **WHEN** no provider configuration is supplied
+- **THEN** the system uses mock providers
+
 ### Requirement: Dashboard widgets
 The system SHALL allow modules (discrete feature areas enabled by configuration) to inject widgets into the dashboard.
 
