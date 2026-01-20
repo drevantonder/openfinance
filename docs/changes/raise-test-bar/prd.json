@@ -1,0 +1,69 @@
+{
+  "name": "Raise test bar implementation",
+  "branchName": "ralph/raise-test-bar",
+  "description": "Implement CI quality gates, test runner setup, and UI smoke flow support for the raise-test-bar change.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Set up app test runner with coverage",
+      "description": "As a maintainer, I want Jest + jest-expo configured for apps/mobile with coverage output.",
+      "acceptanceCriteria": [
+        "Jest + jest-expo configuration exists for apps/mobile",
+        "apps/mobile test script runs Jest with coverage enabled",
+        "pnpm lint passes",
+        "pnpm test passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-002",
+      "title": "Add CI lint/test quality gates",
+      "description": "As a maintainer, I want GitHub Actions to enforce lint/test on every PR.",
+      "acceptanceCriteria": [
+        "GitHub Actions workflow runs on pull_request",
+        "Workflow installs pnpm dependencies",
+        "Workflow runs pnpm lint and pnpm test",
+        "pnpm lint passes",
+        "pnpm test passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "",
+      "dependsOn": ["US-001"]
+    },
+    {
+      "id": "US-003",
+      "title": "Gate build on app changes",
+      "description": "As a maintainer, I want CI to run pnpm build only when app code changes.",
+      "acceptanceCriteria": [
+        "CI runs pnpm build only when changes touch apps/**",
+        "Conditional build logic is documented in the workflow",
+        "pnpm lint passes",
+        "pnpm test passes"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "",
+      "dependsOn": ["US-002"]
+    },
+    {
+      "id": "US-004",
+      "title": "Run Maestro smoke flows when present",
+      "description": "As a maintainer, I want CI to run Maestro smoke flows for UI changes when flows exist.",
+      "acceptanceCriteria": [
+        "CI detects Maestro flows in maestro/ or apps/**/maestro/",
+        "Maestro smoke flows run only when UI changes touch apps/** and flows exist",
+        "CI logs that Maestro flows are skipped when none exist",
+        "pnpm lint passes",
+        "pnpm test passes"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "",
+      "dependsOn": ["US-002"]
+    }
+  ]
+}
