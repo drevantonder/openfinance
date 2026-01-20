@@ -20,11 +20,13 @@ Use when executing a change via ralph-tui.
 2. Infer story split and dependencies from the proposal + deltas. Only ask if unclear.
 3. Infer quality gates from context (typecheck/test/build as relevant) and include them in each story without overloading criteria.
 4. Infer a short description from `proposal.md`.
-5. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
-6. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
-7. Ask the user to review the prd.json and request edits if needed.
-8. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after the user confirms the prd.json.
-9. Remind the user to run ralph-tui outside opencode.
+5. Confirm the change is reviewed and approved before creating `docs/changes/<slug>/prd.json`.
+6. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
+7. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
+8. Ask the user to review the prd.json and request edits if needed. If no edits, ask which run/implement mode to use.
+9. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
+10. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after the user confirms the prd.json.
+11. Remind the user to run ralph-tui outside opencode.
 
 ## prd.json Schema
 
@@ -33,42 +35,47 @@ Use when executing a change via ralph-tui.
 Always write `prd.json` at `docs/changes/<slug>/prd.json`.
 
 Root fields:
-- `title` (required)
+- `name` (required)
 - `description` (optional)
-- `stories` (required array)
+- `branchName` (optional)
+- `userStories` (required array)
 
 Per-story fields:
 - `id` (required)
 - `title` (required)
-- `acceptanceCriteria` (required)
 - `passes` (required)
-- `description`, `dependsOn` (optional, include when useful)
+- `description`, `acceptanceCriteria`, `priority`, `dependsOn` (optional, include when useful)
 
 Example (full):
 ```json
 {
-  "title": "Change name",
+  "name": "Change name",
   "description": "Short overview",
-  "stories": [
+  "userStories": [
     {
       "id": "US-001",
       "title": "Short title",
       "description": "As a user, I want ...",
       "acceptanceCriteria": ["Criterion 1", "Criterion 2"],
-      "dependsOn": [],
-      "passes": false
+      "priority": 1,
+      "passes": false,
+      "dependsOn": []
     }
   ]
 }
 ```
 
-Example (minimal story):
+Example (minimal):
 ```json
 {
-  "id": "US-002",
-  "title": "Short title",
-  "acceptanceCriteria": ["Criterion 1"],
-  "passes": false
+  "name": "My Task",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "First task",
+      "passes": false
+    }
+  ]
 }
 ```
 
@@ -89,3 +96,4 @@ Example (minimal story):
 - Keep stories small enough for one agent iteration.
 - Ralph TUI updates `passes` during runs; manual review can flip them back as needed.
 - Read upstream schema docs if unsure: https://ralph-tui.com/docs/plugins/trackers/json
+- The JSON tracker validates schema and will report missing fields like `name`, `userStories`, or `passes`.
