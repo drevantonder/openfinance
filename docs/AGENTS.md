@@ -6,6 +6,9 @@
 - Choose a verb-led change slug.
 - Create `docs/changes/<slug>/proposal.md` and delta specs under `docs/changes/<slug>/specs/`.
 - Validate spec format.
+- Implement via chosen path.
+- Review implementation.
+- Sync to `docs/specs/`.
 - Archive by moving `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
 
 ## Directory Structure
@@ -46,21 +49,24 @@ New request?
 - Create or update `proposal.md` and delta specs to clarify requirements.
 - Choose an implementation path (see below).
 - Validate spec format.
-- Sync to `docs/specs/` when a change becomes current truth (manual review step).
+- Implement the change.
+- Review implementation against the spec.
+- Sync to `docs/specs/` when implementation is accepted.
 - Archive when work is complete.
 
 ## Implementation Paths
 
-- Ralph TUI (AFK loop): after review, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` outside opencode.
-- HITL Ralph loop: after review, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, run one iteration outside opencode, review, adjust spec, repeat.
+- Ralph TUI (AFK loop): after spec approval, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` outside opencode.
+- HITL Ralph loop: after spec approval, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, run one iteration outside opencode, review, adjust spec, repeat.
 - Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.).
 - Human implementation: no agent loop.
 
 ## Approval Gate
 
-- Do not start implementation until the change is reviewed and approved.
+- Do not start implementation until the change proposal/spec is reviewed and approved.
 - Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
 - Runtime artifacts (code, scripts, configs) are created or edited only during a selected implementation path; spec work is limited to proposal/spec/design/prd.json.
+- Do not sync to `docs/specs/` until implementation has been reviewed and accepted.
 
 ## Skills
 
@@ -72,8 +78,8 @@ New request?
 
 ## Sync to Current Truth
 
-Keep changes in `docs/changes/` until review is complete. After review, use `syncing-to-specs` to promote the change into `docs/specs/` as the current truth.
+When changes in `docs/changes/` have been implemented and reviewed, suggest using the `syncing-to-specs` skill to promote and merge specs into `docs/specs/`.
 
 ## Archive
 
-After completion, move `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
+When changes have been synced suggest using the `archiving-changes` skill to archive changes in `docs/changes/` to `docs/changes/archive/`.
