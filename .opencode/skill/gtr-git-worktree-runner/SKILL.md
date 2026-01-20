@@ -33,4 +33,5 @@ ralph-tui run --prd docs/changes/<slug>/prd.json
 
 ## More details
 
-Run `git gtr --help` or `git gtr new --help` for full options and examples.
+- Run `git gtr --help` or `git gtr new --help` for full options and examples.
+- See git-worktree-runner docs for detailed workflows and advanced usage.

@@ -25,7 +25,7 @@ Use when executing a change via ralph-tui.
 7. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when user chooses Ralph TUI path.
 7. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
 8. Ask the user to review prd.json and request edits if needed. If no edits, ask which run/implement mode to use.
-9. Before running ralph-tui, remind the user to create a worktree using gtr-git-worktree-runner:
+9. Before running ralph-tui, offer to help create a worktree using gtr-git-worktree-runner:
    ```bash
    git gtr new <branch>
    cd "$(git gtr go <branch>)"
