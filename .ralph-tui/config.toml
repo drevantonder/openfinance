@@ -6,8 +6,11 @@ autoCommit = true
 subagentTracingDetail = "full"
 
 [agentOptions]
-provider = "google"
-model = "gemini-3-flash-preview"
-variant = "high"
+provider = "openai"
+model = "gpt-5.2-codex"
+variant = "xhigh"
+# provider = "google"
+# model = "gemini-3-flash-preview"
+# variant = "high"
 
 [trackerOptions]
