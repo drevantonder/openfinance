@@ -23,8 +23,11 @@ Use when you want to update `docs/specs/` with deltas from a change without arch
    - MODIFIED: update only what the delta specifies (add scenarios, tweak text) while preserving existing scenarios and content not mentioned.
    - REMOVED: remove the entire requirement block.
    - RENAMED: rename the requirement header (if content changes, also apply MODIFIED).
-4. Ensure every requirement still has at least one `#### Scenario:`.
-5. Summarize changes by capability.
+4. Normalize current truth format:
+   - Ensure a single top-level `## Requirements` heading.
+   - Remove delta section headers (ADDED/MODIFIED/REMOVED/RENAMED) from `docs/specs/`.
+5. Ensure every requirement still has at least one `#### Scenario:`.
+6. Summarize changes by capability.
 
 ## Notes
 
