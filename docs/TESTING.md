@@ -8,8 +8,11 @@ Current truth for testing lives in `docs/specs/project-setup/spec.md`.
 
 ## Test bar
 
-- Run `pnpm lint`, `pnpm test`, and `pnpm build` before merging changes.
-- Add coverage only when a change introduces new behavior or fixes a bug.
+- Run `pnpm lint` and `pnpm test` before merge.
+- Run `pnpm build` when changes touch `apps/**` or shared packages used by apps.
+- For significant behavior or UI changes, ensure lint/test pass before merge.
+- Maintain >=90% line and branch coverage; avoid coverage regressions.
+- Run Maestro UI smoke flows for UI changes when flows exist in `maestro/` or `apps/**/maestro/`.
 
 ## Commands
 
