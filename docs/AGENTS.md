@@ -1,32 +1,41 @@
 # Spec Driven Development (SDD) Workflow Instructions
 
-## TL;DR Quick Checklist
+## Quick Checklist
 
-- Read `docs/project.md` for context.
-- Choose a verb-led change slug.
-- Create `docs/changes/<slug>/proposal.md` and delta specs under `docs/changes/<slug>/specs/`.
-- Validate spec format.
-- For ralph‑tui: create a worktree with gtr-git-worktree-runner.
-- Implement via chosen path.
-- Review implementation.
-- Sync to `docs/specs/`.
-- Archive by moving `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
+- Study `docs/` for context to avoid making mistakes by assumptions
+- On completion of workflow actions, suggest:
+  - 1) To continue iterating based on feedback
+  - 2+) Any actions that make sense to follow the completed action
+
+## Workflow Actions
+
+- Use `creating-changes` skill to create or update a change/spec delta
+- Implement via user chosen path. (see below)
+  - Do not start implementation unless the user has reviewed the proposal & spec and approved. (Implicit approval can be given. e.g can we create prd.json now)
+  - Do not write or edit code unless an implementation method has been chosen by the user
+- Review implementation and iterate if needed.
+- Merge/commit as needed
+- Use `syncing-specs` skill to sync spec deltas to `docs/specs/`.
+  - Only sync spec deltas to `docs/specs` that have been implemented
+- Use `archiving-changes` skill to archive `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
+- Adjust this workflow (using `adjusting-spec-driven-development-workflow`) and skills when issues are identified
+(Not necessarily in this order, but typically follow this flow)
 
 ## Directory Structure
 
 ```
 docs/
 ├── project.md
-├── specs/                      # Current truth (empty for now)
+├── specs/                      # Current truth matching the implementation
 └── changes/
     ├── <slug>/
     │   ├── proposal.md         # Why + what changes
-    │   ├── specs/              # Delta specs by capability
+    │   ├── specs/              # Delta specs by capability to be implemented
     │   │   └── <capability>/
     │   │       └── spec.md
     │   ├── prd.json            # Ralph TUI tasks (optional)
     │   └── design.md           # Optional technical decisions
-    └── archive/
+    └── archive/                # Archived changes (either implemented or rejected)
 ```
 
 ## Decision Tree
@@ -38,58 +47,28 @@ New request?
 └─ Formatting or refactor only? → Skip change
 ```
 
-## Creating Changes
-
-1. Read `docs/project.md` for context.
-2. Choose a unique, verb-led change slug.
-3. Create `docs/changes/<slug>/proposal.md` with Why + What Changes.
-4. Create delta specs at `docs/changes/<slug>/specs/<capability>/spec.md`.
-
-## Actions
-
-- Create or update `proposal.md` and delta specs to clarify requirements.
-- Choose an implementation path (see below).
-- Validate spec format.
-- Implement the change.
-- Review implementation against the spec.
-- For ralph‑tui changes, squash story commits before merging.
-- Sync to `docs/specs/` when implementation is accepted.
-- Archive when work is complete.
-
-## Implementation Paths
+## Implementation Method
 
 - Ralph TUI (AFK loop): after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` from the worktree. Squash story commits before merging.
 - HITL Ralph loop: after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, run one iteration from the worktree, review, adjust spec, repeat. Squash story commits before merging.
 - Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.) with optional gtr worktree.
 - Human implementation: no agent loop; optional gtr worktree.
 
-## Approval Gate
-
-- Do not start implementation until the change proposal/spec is reviewed and approved.
-- Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
-- Runtime artifacts (code, scripts, configs) are created or edited only during a selected implementation path; spec work is limited to proposal/spec/design/prd.json.
-- Do not sync to `docs/specs/` until implementation has been reviewed and accepted.
-
 ## Skills
 
 - `creating-changes` for proposal/delta authoring, examples, and validation tips.
 - `implementing-with-ralph-tui` for prd.json schema and ralph-tui execution (run outside opencode).
 - `syncing-to-specs` for promoting specs with intelligent merge.
-- `archiving-changes` for archiving changes (syncs by default).
-- `gtr-git-worktree-runner` for isolated worktree workflows (required for ralph‑tui, optional otherwise).
-- `adjusting-spec-driven-development-workflow` for improving the workflow itself.
+- `archiving-changes` for archiving changes.
+- `gtr-git-worktree-runner` for isolated worktree workflows.
+- `adjusting-spec-driven-development-workflow` for adjusting the workflow itself.
+
+Note: `ralph-tui-create-json` skill is for a PRD.md → prd.json workflow. We do not use PRD.md because specs replace it. Use `implementing-with-ralph-tui` skill first for workflow, then use `ralph-tui-create-json` skill for prd.json structure and best practices.
 
 ## Worktree Management
 
 Use git-worktree-runner (gtr) to create isolated worktrees for parallel work:
+
 - Required for ralph‑tui changes
 - Optional for human/agentic sessions
 - See `gtr-git-worktree-runner` skill for commands and workflow details
-
-## Sync to Current Truth
-
-When changes in `docs/changes/` have been implemented and reviewed, suggest using the `syncing-to-specs` skill to promote and merge specs into `docs/specs/`.
-
-## Archive
-
-When changes have been synced suggest using the `archiving-changes` skill to archive changes in `docs/changes/` to `docs/changes/archive/`.

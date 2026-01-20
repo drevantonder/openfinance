@@ -11,11 +11,6 @@ See `docs/AGENTS.md` for change workflow and spec format.
 Read `docs/project.md` for project context.
 Read `docs/TESTING.md` for the test bar and commands.
 
-## Ralph TUI
-
-Use ralph-tui loops when scope is clear and verifiable.
-Use `docs/changes/<slug>/prd.json` as the task source.
-
 ## Audience & Language
 
 Apply these rules whenever you write copy, names, or specs.
