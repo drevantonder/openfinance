@@ -58,6 +58,36 @@ jobs:
         if: steps.filter.outputs.apps == 'true'
         run: pnpm install --frozen-lockfile
 
+      - name: Check for Maestro flows
+        id: maestro-check
+        if: steps.filter.outputs.apps == 'true'
+        run: |
+          if [ -d "maestro" ] && [ "$(find maestro -name '*.yaml' -o -name '*.yml' | wc -l)" -gt 0 ]; then
+            echo "has_flows=true" >> $GITHUB_OUTPUT
+            echo "::notice::Maestro flows found in maestro/"
+          elif [ -d "apps/mobile/maestro" ] && [ "$(find apps/mobile/maestro -name '*.yaml' -o -name '*.yml' | wc -l)" -gt 0 ]; then
+            echo "has_flows=true" >> $GITHUB_OUTPUT
+            echo "::notice::Maestro flows found in apps/mobile/maestro/"
+          else
+            echo "has_flows=false" >> $GITHUB_OUTPUT
+            echo "::notice::No Maestro flows detected in maestro/ or apps/**/maestro/"
+          fi
+
       - name: Run build
         if: steps.filter.outputs.apps == 'true'
         run: pnpm build
+
+      - name: Run Maestro smoke flows
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'true'
+        run: |
+          echo "Running Maestro smoke flows..."
+          if [ -d "maestro" ]; then
+            maestro test maestro/
+          fi
+          if [ -d "apps/mobile/maestro" ]; then
+            maestro test apps/mobile/maestro/
+          fi
+
+      - name: Maestro flows skipped
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'false'
+        run: echo "::notice::Maestro smoke flows skipped: no flows found"
