@@ -17,17 +17,24 @@ Use when executing a change via ralph-tui.
 ## Behavior
 
 1. Study all files in `docs/changes/<slug>/`, with emphasis on delta specs under `specs/`.
-2. Infer story split and dependencies from the proposal + deltas. Only ask if unclear.
+2. Infer story split and dependencies from proposal + deltas. Only ask if unclear.
 3. Infer quality gates from context (typecheck/test/build as relevant) and include them in each story without overloading criteria.
 4. Infer a short description from `proposal.md`.
 5. Confirm the change is reviewed and approved before creating `docs/changes/<slug>/prd.json`.
-6. If the user asks to create or generate `prd.json`, treat that as implicit approval and proceed without a separate approval prompt.
-7. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
+6. If user asks to create or generate `prd.json`, treat that as implicit approval and proceed without a separate approval prompt.
+7. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when user chooses Ralph TUI path.
 7. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
-8. Ask the user to review the prd.json and request edits if needed. If no edits, ask which run/implement mode to use.
-9. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
-10. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after the user confirms the prd.json.
-11. Remind the user to run ralph-tui outside opencode.
+8. Ask the user to review prd.json and request edits if needed. If no edits, ask which run/implement mode to use.
+9. Before running ralph-tui, remind the user to create a worktree using gtr-git-worktree-runner:
+   ```bash
+   git gtr new <branch>
+   cd "$(git gtr go <branch>)"
+   ralph-tui run --prd docs/changes/<slug>/prd.json
+   ```
+10. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
+11. Only suggest running `ralph-tui run --prd docs/changes/<slug>/prd.json` after user confirms prd.json.
+12. Remind the user to run ralph-tui outside opencode.
+
 
 ## prd.json Schema
 

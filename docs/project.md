@@ -74,6 +74,7 @@ Proposed changes live in `docs/changes/`, with `docs/changes/<slug>/proposal.md`
 - Trunk-based development on `main`
 - Short-lived branches when needed
 - Conventional Commits required
+- Use git-worktree-runner (gtr) for ralph‑tui changes; optional for human/agentic work. gtr defaults to `.worktrees/` directory.
 
 ## Domain Context
 

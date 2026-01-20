@@ -6,6 +6,7 @@
 - Choose a verb-led change slug.
 - Create `docs/changes/<slug>/proposal.md` and delta specs under `docs/changes/<slug>/specs/`.
 - Validate spec format.
+- For ralph‑tui: create a worktree with gtr-git-worktree-runner.
 - Implement via chosen path.
 - Review implementation.
 - Sync to `docs/specs/`.
@@ -56,10 +57,10 @@ New request?
 
 ## Implementation Paths
 
-- Ralph TUI (AFK loop): after spec approval, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` outside opencode.
-- HITL Ralph loop: after spec approval, use the `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, run one iteration outside opencode, review, adjust spec, repeat.
-- Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.).
-- Human implementation: no agent loop.
+- Ralph TUI (AFK loop): after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, then run `ralph-tui run --prd docs/changes/<slug>/prd.json` from the worktree.
+- HITL Ralph loop: after spec approval, use `implementing-with-ralph-tui` skill to generate `docs/changes/<slug>/prd.json`, create a worktree with gtr, run one iteration from the worktree, review, adjust spec, repeat.
+- Agentic session: use an assistant (OpenCode, Claude Code, Cursor, etc.) with optional gtr worktree.
+- Human implementation: no agent loop; optional gtr worktree.
 
 ## Approval Gate
 
@@ -74,7 +75,15 @@ New request?
 - `implementing-with-ralph-tui` for prd.json schema and ralph-tui execution (run outside opencode).
 - `syncing-to-specs` for promoting specs with intelligent merge.
 - `archiving-changes` for archiving changes (syncs by default).
+- `gtr-git-worktree-runner` for isolated worktree workflows (required for ralph‑tui, optional otherwise).
 - `adjusting-spec-driven-development-workflow` for improving the workflow itself.
+
+## Worktree Management
+
+Use git-worktree-runner (gtr) to create isolated worktrees for parallel work:
+- Required for ralph‑tui changes
+- Optional for human/agentic sessions
+- See `gtr-git-worktree-runner` skill for commands and workflow details
 
 ## Sync to Current Truth
 
