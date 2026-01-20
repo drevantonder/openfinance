@@ -21,7 +21,8 @@ Use when executing a change via ralph-tui.
 3. Infer quality gates from context (typecheck/test/build as relevant) and include them in each story without overloading criteria.
 4. Infer a short description from `proposal.md`.
 5. Confirm the change is reviewed and approved before creating `docs/changes/<slug>/prd.json`.
-6. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
+6. If the user asks to create or generate `prd.json`, treat that as implicit approval and proceed without a separate approval prompt.
+7. Produce `docs/changes/<slug>/prd.json` using the ralph-tui JSON schema only when the user chooses the Ralph TUI path.
 7. Stories must cover implementation only; do not add stories for creating specs that already exist in `docs/changes/<slug>/specs/`.
 8. Ask the user to review the prd.json and request edits if needed. If no edits, ask which run/implement mode to use.
 9. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.

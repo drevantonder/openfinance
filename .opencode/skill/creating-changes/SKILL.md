@@ -27,6 +27,7 @@ Skip a change for:
 
 - Read `docs/project.md` for context.
 - Check `docs/changes/` for existing work.
+- If `docs/changes/<slug>/` is missing, create the change folder and baseline files; only ask if the slug is unclear or conflicts.
 - Ask clarifying questions if requirements are unclear.
 
 ## Change Structure

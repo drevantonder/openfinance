@@ -8,7 +8,6 @@
 - Validate spec format.
 - Archive by moving `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
 
-
 ## Directory Structure
 
 ```
@@ -59,7 +58,9 @@ New request?
 
 ## Approval Gate
 
-Do not start implementation until the change is reviewed and approved. Only create `prd.json` after review. Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
+- Do not start implementation until the change is reviewed and approved.
+- Implementation is done only via the selected run/implement mode (AFK/HITL/agentic), not eagerly.
+- Runtime artifacts (code, scripts, configs) are created or edited only during a selected implementation path; spec work is limited to proposal/spec/design/prd.json.
 
 ## Skills
 
