@@ -103,5 +103,6 @@ Example (minimal):
 
 - Keep stories small enough for one agent iteration.
 - Ralph TUI updates `passes` during runs; manual review can flip them back as needed.
+- Ralph TUI may add non-schema fields (like `completionNotes` or `metadata`) to `prd.json`; treat them as runtime annotations, not errors.
 - Read upstream schema docs if unsure: https://ralph-tui.com/docs/plugins/trackers/json
 - The JSON tracker validates schema and will report missing fields like `name`, `userStories`, or `passes`.
