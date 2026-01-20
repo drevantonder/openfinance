@@ -7,7 +7,7 @@ Open-source modular personal finance app that saves people time in managing mone
 ## Docs & Specs
 
 For workflow details, read `docs/AGENTS.md`.
-Current truth lives in `docs/specs/` (empty for now).
+Current truth lives in `docs/specs/`.
 Proposed changes live in `docs/changes/`, with `docs/changes/<slug>/proposal.md` and delta specs under `docs/changes/<slug>/specs/`, plus `docs/changes/<slug>/prd.json` as the execution plan.
 
 ## Features
