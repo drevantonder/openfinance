@@ -77,6 +77,12 @@ jobs:
         if: steps.filter.outputs.apps == 'true'
         run: pnpm build
 
+      - name: Install Maestro
+        if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'true'
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "${HOME}/.maestro/bin" >> "$GITHUB_PATH"
+
       - name: Run Maestro smoke flows
         if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'true'
         run: |
@@ -90,4 +96,5 @@ jobs:
 
       - name: Maestro flows skipped
         if: steps.filter.outputs.apps == 'true' && steps.maestro-check.outputs.has_flows == 'false'
-        run: echo "::notice::Maestro smoke flows skipped: no flows found"
+        run: |
+          echo "::notice::Maestro smoke flows skipped: no flows found"
