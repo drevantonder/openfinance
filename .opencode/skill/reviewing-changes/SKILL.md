@@ -24,7 +24,8 @@ Use this skill when you need to verify that an implementation (after a ralph-tui
    - **When to Fix**: Use `needs-fix` for correctable bugs, missing edge cases, or small spec gaps that don't require a full rewrite.
 5. **No Code Edits**: Do NOT modify application code during review.
 6. **Stop for Review**: After appending the review findings to `review.md`, present the findings and your decision to the user. Do NOT proceed to updating `prd.json` until the user acknowledges the findings and approves the `needs-fix` or `reject` path.
-7. **If `needs-fix`**:
+7. **Commit Change Artifacts**: After the user approves the findings and any updates to `prd.json`, `proposal.md`, or specs, commit ONLY the files in `docs/changes/<slug>/`. This ensures the worktree is clean for the fix loop.
+8. **If `needs-fix`**:
     - Update `docs/changes/<slug>/prd.json` to act as a fix queue.
    - **Reopen** stories that failed: set `passes: false` and update `acceptanceCriteria` to include the missing/failed behavior.
    - **Add new** stories for gaps: Title `Fix: <summary>`, use spec-derived criteria, and note the issue ID (e.g., `Issue: R1`).
