@@ -13,10 +13,10 @@
 - Implement via user chosen path. (see below)
   - Do not start implementation unless the user has reviewed the proposal & spec and approved. (Implicit approval can be given. e.g can we create prd.json now)
   - Do not write or edit code unless an implementation method has been chosen by the user
-- Review implementation and iterate if needed.
+- Review implementation using `reviewing-changes` skill and iterate if needed.
 - Merge/commit as needed
 - Use `syncing-specs` skill to sync spec deltas to `docs/specs/`.
-  - Only sync spec deltas to `docs/specs` that have been implemented
+- Only sync spec deltas to `docs/specs` that have been implemented
 - Use `archiving-changes` skill to archive `docs/changes/<slug>/` to `docs/changes/archive/<date>-<slug>/`.
 - Adjust this workflow (using `adjusting-spec-driven-development-workflow`) and skills when issues are identified
 (Not necessarily in this order, but typically follow this flow)
@@ -34,8 +34,9 @@ docs/
     │   │   └── <capability>/
     │   │       └── spec.md
     │   ├── prd.json            # Ralph TUI tasks (optional)
+    │   ├── review.md           # Append-only review log with Open Issues list
     │   └── design.md           # Optional technical decisions
-    └── archive/                # Archived changes (either implemented or rejected)
+    └── archive/                # Archived changes (either implemented or abandoned)
 ```
 
 ## Decision Tree
@@ -45,6 +46,12 @@ New request?
 ├─ Behavior change or new capability? → Create/update a change
 ├─ Ambiguous or risky? → Create a change
 └─ Formatting or refactor only? → Skip change
+
+After implementation?
+└─ Review → reviewing-changes
+    ├─ pass → Sync specs → Archive
+    ├─ needs-fix → update prd.json → implement → Review again
+    └─ reject → Clean up branch/worktree → Update specs/PRD → Retry
 ```
 
 ## Implementation Method
@@ -58,6 +65,7 @@ New request?
 
 - `creating-changes` for proposal/delta authoring, examples, and validation tips.
 - `implementing-with-ralph-tui` for prd.json schema and ralph-tui execution (run outside opencode).
+- `reviewing-changes` for append-only review log, Open Issues management, and fix queue updates.
 - `syncing-to-specs` for promoting specs with intelligent merge.
 - `archiving-changes` for archiving changes.
 - `gtr-git-worktree-runner` for isolated worktree workflows.
