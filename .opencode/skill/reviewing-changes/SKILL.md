@@ -20,6 +20,8 @@ Use this skill when you need to verify that an implementation (after a ralph-tui
 4. **Append Review**: Add a new `## Review N` block to `review.md`.
    - List new findings with IDs (`R1`, `R2`, etc.).
    - State the **Decision**: `pass | needs-fix | reject`.
+   - **When to Reject**: Reject if the implementation is fundamentally flawed (e.g., incorrect architecture, massive spec drift, or poor code quality that is expensive to fix). Rejecting allows a clean retry with improved specs/proposal.
+   - **When to Fix**: Use `needs-fix` for correctable bugs, missing edge cases, or small spec gaps that don't require a full rewrite.
 5. **No Code Edits**: Do NOT modify application code during review.
 6. **If `needs-fix`**:
    - Update `docs/changes/<slug>/prd.json` to act as a fix queue.
@@ -27,8 +29,7 @@ Use this skill when you need to verify that an implementation (after a ralph-tui
    - **Add new** stories for gaps: Title `Fix: <summary>`, use spec-derived criteria, and note the issue ID (e.g., `Issue: R1`).
    - Ask the user to review the updated `prd.json`.
 7. **If `reject`**:
-   - Suggest cleaning up the implementation branch/worktree.
-   - Recommend updating `proposal.md`, `specs/`, or `prd.json` with learnings before a clean retry.
+   - Use the `rejecting-changes` skill to analyze failure, extract learnings, update artifacts, and clean up for retry.
 8. **If `pass`**:
    - Suggest syncing specs and archiving the change.
 
