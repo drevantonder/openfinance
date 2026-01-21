@@ -3,16 +3,10 @@ maxIterations = 10
 agent = "opencode"
 tracker = "json"
 autoCommit = true
-subagentTracingDetail = "full"
+subagentTracingDetail = "minimal"
 
 [agentOptions]
 provider = "zai-coding-plan"
 model = "glm-4.7"
-# provider = "openai"
-# model = "gpt-5.2-codex"
-# variant = "xhigh"
-# provider = "google"
-# model = "gemini-3-flash-preview"
-# variant = "high"
 
 [trackerOptions]

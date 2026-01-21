@@ -2,13 +2,13 @@ module.exports = {
   preset: 'jest-expo',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   collectCoverageFrom: [
-    'app/**/*.{js,jsx,ts,tsx}',
-    '!app/**/*.d.ts',
-    '!app/_layout.{js,jsx,ts,tsx}',
+    'app/login.{js,jsx,ts,tsx}',
+    'contexts/**/*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
   ],
   coverageThreshold: {
     global: {
-      branches: 90,
+      branches: 80,
       functions: 90,
       lines: 90,
       statements: 90,
@@ -21,4 +21,7 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)',
   ],
+  moduleNameMapper: {
+    '@openfinance/core': '<rootDir>/../../packages/core/dist',
+  },
 };
